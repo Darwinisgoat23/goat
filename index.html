@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nothing Important</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container Styles */
+    .container {
+      max-width: 800px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px rgba(0, 0, 255, 0.3);
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* Typography Styles */
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Button Styles */
+    .button {
+      display: block;
+      width: 100%;
+      max-width: 200px;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Hide Element */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Hello, welcome Agent Jain to this beautiful website!</h1>
+    <h2>Find below some text and a button. Click the button to continue reading.</h2>
+
+    <div id="a" class="hidden">
+      <p>Right, so bro is very fortunate and very happy with all his gadgets and loves his headphones but...</p>
+    </div>
+
+    <div id="b" class="hidden">
+      <p>It would be great if I could get some Nothing ear 2's, and here are my reasons why I need them:</p>
+      <ol>
+        <li>My old Philips headphones are old now and don't work nicely.</li>
+        <li>The Nothings will help me study because I am focused when I hear music.</li>
+      </ol>
+    </div>
+
+    <div id="c" class="hidden">
+      <ol start="3">
+        <li>I want to get into mixing sound, and for that, Philips headphones don't support the codecs needed. I have
+          downloaded a free version of Logic Pro on Mac and will use that for editing sound and frequencies.</li>
+        <li>I want to enjoy high-quality lossless music, which my Philips headphones don't support.</li>
+      </ol>
+    </div>
+
+    <div id="d" class="hidden">
+      <p>With good headphones, I will exercise more and hang from the railing on our roof to increase my height.</p>
+    </div>
+
+    <div id="e" class="hidden">
+      <p>Your mission Mr or Mrs Jain, should you choose to accept it, is to buy me Nothing ear 2's.</p>
+      <p>This message will self-destruct in 5 seconds.</p>
+    </div>
+
+    <button id="nextButton" class="button">Next</button>
+
+    <script>
+      var elements = ['a', 'b', 'c', 'd', 'e'];
+      var currentIndex = 0;
+
+      var nextButton = document.getElementById('nextButton');
+      nextButton.addEventListener('click', showNext);
+
+      function showNext() {
+        var currentElement = document.getElementById(elements[currentIndex]);
+        currentElement.classList.add('hidden');
+        currentIndex++;
+
+        if (currentIndex >= elements.length) {
+          setTimeout(selfDestruct, 5000);
+        } else {
+          var nextElement = document.getElementById(elements[currentIndex]);
+          nextElement.classList.remove('hidden');
+        }
+      }
+
+      var elements = ['a', 'b', 'c', 'd', 'e'];
+var currentIndex = 0;
+var isFinalTextDisplayed = false;
+
+var nextButton = document.getElementById('nextButton');
+nextButton.addEventListener('click', showNext);
+
+function showNext() {
+  var currentElement = document.getElementById(elements[currentIndex]);
+  currentElement.classList.add('hidden');
+  currentIndex++;
+
+  if (currentIndex >= elements.length) {
+    if (!isFinalTextDisplayed) {
+      isFinalTextDisplayed = true;
+      var timerElement = document.createElement('div');
+      timerElement.setAttribute('id', 'timer');
+      timerElement.innerText = '5';
+      document.body.appendChild(timerElement);
+      startTimer(5, selfDestruct);
+    }
+  } else {
+    var nextElement = document.getElementById(elements[currentIndex]);
+    nextElement.classList.remove('hidden');
+  }
+}
+
+function startTimer(duration, callback) {
+  var timer = setInterval(function () {
+    var timerElement = document.getElementById('timer');
+    var seconds = parseInt(timerElement.innerText);
+    seconds--;
+
+    if (seconds <= 0) {
+      clearInterval(timer);
+      callback();
+    } else {
+      timerElement.innerText = seconds;
+    }
+  }, 1000);
+}
+
+function selfDestruct() {
+  var container = document.querySelector('.container');
+  container.style.backgroundColor = 'red';
+  container.innerHTML = '<h1 style="color: #fff;">This message has self-destructed.</h1>';
+  setTimeout(function () {
+    container.style.display = 'none';
+  }, 3000);
+}
+
+
+
+
+
+      
+    </script>
+  </div>
+</body>
+
+</html>
